@@ -48,7 +48,7 @@ export const loginService = async (data) => {
             // Checking user exists
             const user = await userModel.findOne({ 
                 email 
-            }).select("-password")
+            })
         
             if (!user) {
                 return res.status(404).json({ message: "User not found" })

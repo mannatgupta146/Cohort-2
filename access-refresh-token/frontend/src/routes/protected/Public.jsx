@@ -3,7 +3,11 @@ import { useSelector } from "react-redux"
 import { Outlet, Navigate } from "react-router"
 
 const Public = () => {
-  const { user } = useSelector((state) => state.auth)
+  const { user, isLoading } = useSelector((state) => state.auth)
+
+  if(isLoading){
+    return <div>Loading...</div>
+  }
 
   if (user) {
     return <Navigate to="/home" />

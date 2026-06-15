@@ -1,18 +1,17 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Outlet, Navigate } from 'react-router'
+import React from "react"
+import { useSelector } from "react-redux"
+import { Outlet, Navigate } from "react-router"
 
 const Public = () => {
+  const { user } = useSelector((state) => state.auth)
 
-    const { user } = useSelector(state => state.auth)
-
-    if(user){
-        return <Navigate to="/home" />
-    }
+  if (user) {
+    return <Navigate to="/home" />
+  }
 
   return (
     <div>
-        <Outlet />
+      <Outlet />
     </div>
   )
 }

@@ -70,3 +70,16 @@ export const getAccessTokenController = async (req, res) => {
     message: "Access token generated successfully",
   })
 }
+
+export const getMeController = async (req, res) => {
+  try {
+    return res.status(200).json({
+      message: "User fetched successfully",
+      user: req.user,
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    })
+  }
+}

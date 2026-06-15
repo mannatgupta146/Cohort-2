@@ -7,16 +7,28 @@ export let axiosInstance = axios.create({
 
 /* axiosInstance.interceptors.request.use() */
 
-/* axiosInstance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
     (res) => {
         console.log("axios instance response ", res)
         return res
     },
     async (error) => {
-        console.log("error in instance", error)
+        let originalReq = error.config
 
-        if(error?.response?.status === 401){
-            await axiosInstance.get("/get-accessToken")
+        if(error.response.status === 401 || !originalReq.retry){
+
+            originalReq.retry = true
+
+            try {
+                let res = await axiosInstance.get("/api/auth/get-accessToken")
+                console.log(res)
+                return axiosInstance(originalReq)
+
+            } catch (error) {
+                window.location.href = "/"
+                return Promise.reject(error)
+            }
         }
     }
-) */
+)
+

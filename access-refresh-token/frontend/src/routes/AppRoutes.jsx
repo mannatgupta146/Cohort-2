@@ -8,7 +8,7 @@ import MainLayout from "../layouts/MainLayout"
 import Public from "./protected/Public"
 import Protected from "./protected/Protected"
 import { axiosInstance } from "../config/axiosInstance"
-import { addUser } from "../state/authReducer"
+import { addUser, removeUser } from "../state/authReducer"
 import { useDispatch } from "react-redux"
 
 const AppRoutes = () => {
@@ -22,6 +22,7 @@ const AppRoutes = () => {
         console.log(res.data.user)
         dispatch(addUser(res.data.user))
       } catch (error) {
+        dispatch(removeUser())
         console.log("error in me api", error)
       }
     })()

@@ -4,9 +4,9 @@ import React from 'react'
 const Navbar = () => {
   return (
     <div className="flex justify-center items-center gap-4">
-      <Link href="/home">home</Link>
-      <Link href="/contact">contact</Link>
-      <Link href="/about">about</Link>
+      <Link href="/mainlayout/home">home</Link>
+      <Link href="/mainlayout/contact">contact</Link>
+      <Link href="/mainlayout/about">about</Link>
     </div>
   );
 };

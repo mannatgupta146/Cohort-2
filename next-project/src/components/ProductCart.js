@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ProductCard({ product }) {
   return (
     <div className="group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-zinc-900 dark:hover:border-zinc-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:hover:shadow-zinc-950/50">
@@ -7,11 +9,13 @@ export default function ProductCard({ product }) {
           {product.category}
         </span>
 
+        <Link href={`/products/${product.id}`}>
         <img
           src={product.image}
           alt={product.title}
           className="h-56 w-full object-contain transition-transform duration-500 group-hover:scale-110"
         />
+        </Link>
       </div>
 
       <div className="p-5">

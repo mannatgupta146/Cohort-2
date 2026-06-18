@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col " suppressHydrationWarning>
         <Navbar/>
         <div className="px-6 py-4">{children}</div>

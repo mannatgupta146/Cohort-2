@@ -9,7 +9,7 @@ export default function ProductCard({ product }) {
           {product.category}
         </span>
 
-        <Link href={`/products/${product.id}`}>
+        <Link href={`/layout/products/${product.id}`}>
           <img
             src={product.image}
             alt={product.title}
@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
       </div>
 
       <div className="p-5">
-        <h2 className="text-zinc-900 dark:text-zinc-100 font-semibold text-lg leading-tight line-clamp-2 min-h-[56px]">
+        <h2 className="text-zinc-900 dark:text-zinc-100 font-semibold text-lg leading-tight line-clamp-2 min-h-14">
           {product.title}
         </h2>
 

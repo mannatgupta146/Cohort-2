@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center px-6 py-4 border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
-        <h1 className="font-bold text-2xl bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">e-com</h1>
+        <h1 className="font-bold text-2xl bg-linear-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">e-com</h1>
         <div className="relative flex gap-6 items-center">
             {links.map((link) => {
               const isActive = pathname === link.href;
@@ -33,7 +33,7 @@ const Navbar = () => {
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 h-[2px] bg-primary rounded-full animate-expand-underline" />
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-primary rounded-full animate-expand-underline" />
                   )}
                 </Link>
               )

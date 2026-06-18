@@ -39,7 +39,7 @@ export default function LoginPage() {
         <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mb-8 text-center relative z-10">
-          <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <h1 className="text-3xl font-extrabold tracking-tight bg-linear-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             Welcome Back
           </h1>
           <p className="text-muted-foreground mt-2 text-sm">

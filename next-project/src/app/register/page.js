@@ -7,8 +7,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { api } from "@/lib/api"
+import { useRouter } from "next/navigation"
 
 export default function RegisterPage() {
+
+  const router = useRouter()
+
   const [showPassword, setShowPassword] = useState(false)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -23,6 +27,7 @@ export default function RegisterPage() {
       setName("")
       setEmail("")
       setPassword("")
+      router.push("/home")
     } catch (error) {
       console.log("error in handleSubmit", error)
     }

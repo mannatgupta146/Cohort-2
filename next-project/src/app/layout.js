@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import { AuthProvider } from "@/context/authContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col ">
-        <ThemeProvider
+      <body className="min-h-screen flex flex-col " suppressHydrationWarning>
+        <AuthProvider>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
@@ -20,6 +22,8 @@ export default function RootLayout({ children }) {
             <Navbar/>
             <main className="px-6 py-4 flex-1 flex flex-col">{children}</main>
           </ThemeProvider>
+        </AuthProvider>
+
       </body>
     </html>
   );

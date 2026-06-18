@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { AuthProvider } from "@/context/authContext";
@@ -10,8 +9,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col " suppressHydrationWarning>
+    <html suppressHydrationWarning lang="en" className={` h-full antialiased`}>
+      <body className="h-screen gap-5 flex flex-col">
         <AuthProvider>
           <ThemeProvider
             attribute="class"
@@ -19,11 +18,9 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar/>
-            <main className="px-6 py-4 flex-1 flex flex-col">{children}</main>
+            <div className="px-8 flex-1">{children}</div>
           </ThemeProvider>
         </AuthProvider>
-
       </body>
     </html>
   );

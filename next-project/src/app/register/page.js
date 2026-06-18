@@ -27,14 +27,14 @@ export default function RegisterPage() {
       setName("")
       setEmail("")
       setPassword("")
-      router.push("/home")
+      router.push("/layout/home")
     } catch (error) {
       console.log("error in handleSubmit", error)
     }
   }
 
   return (
-    <div className="flex-1 flex items-center justify-center bg-background px-4 py-8 animate-in fade-in duration-500">
+    <div className="min-h-screen w-full flex items-center justify-center bg-background px-4 py-8 animate-in fade-in duration-500">
       <div className="w-full max-w-md bg-card/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-border/80 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
         {/* Decorative background glows */}
         <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-3xl pointer-events-none" />

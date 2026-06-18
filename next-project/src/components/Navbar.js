@@ -9,10 +9,10 @@ const Navbar = () => {
   const pathname = usePathname()
 
   const links = [
-    { name: "home", href: "/home" },
-    { name: "about", href: "/about" },
-    { name: "contact", href: "/contact" },
-    { name: "products", href: "/products" },
+    { name: "home", href: "/layout/home" },
+    { name: "about", href: "/layout/about" },
+    { name: "contact", href: "/layout/contact" },
+    { name: "products", href: "/layout/products" },
   ]
 
   return (

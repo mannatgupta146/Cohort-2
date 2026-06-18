@@ -1,25 +1,26 @@
 "use client"
 
-import { useAuth } from "@/context/authContext"
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import React, { useEffect } from 'react'
+import { useAuth } from "@/context/authContext"
 
-const ProtectedRoute = ({children}) => {
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth()
+  const router = useRouter()
 
-    const { user, loading} = useAuth()
-
-    if(loading){
-        return <div>Loading...</div>
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login")
     }
+  }, [user, loading, router])
 
-    
-    const router = useRouter()
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
-    useEffect(() => {
-        if(!user && !loading){
-            router.push("/login")
-        }
-    }, [user, router, loading])
+  if (!user) {
+    return null
+  }
 
   return children
 }

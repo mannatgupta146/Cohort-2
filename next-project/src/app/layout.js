@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <Navbar/>
-            <div className="px-6 py-4">{children}</div>
+            <main className="px-6 py-4 flex-1 flex flex-col">{children}</main>
           </ThemeProvider>
       </body>
     </html>

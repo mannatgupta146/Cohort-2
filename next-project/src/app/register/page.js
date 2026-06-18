@@ -1,0 +1,120 @@
+"use client"
+
+import Link from "next/link"
+import React, { useState } from 'react'
+import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export default function RegisterPage() {
+  const [showPassword, setShowPassword] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  return (
+    <div className="flex-1 flex items-center justify-center bg-background px-4 py-8 animate-in fade-in duration-500">
+      <div className="w-full max-w-md bg-card/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-border/80 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+        {/* Decorative background glows */}
+        <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="mb-8 text-center relative z-10">
+          <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+            Get Started
+          </h1>
+          <p className="text-muted-foreground mt-2 text-sm">
+            Create an account to track your orders and checkout faster
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
+          <div className="space-y-1.5">
+            <Label htmlFor="name" className="text-sm font-medium text-foreground">
+              Full Name
+            </Label>
+            <div className="relative">
+              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="pl-10 h-11 bg-background/50 border-border/70 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl transition-all"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="email" className="text-sm font-medium text-foreground">
+              Email Address
+            </Label>
+            <div className="relative">
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="pl-10 h-11 bg-background/50 border-border/70 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl transition-all"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="password" className="text-sm font-medium text-foreground">
+              Password
+            </Label>
+            <div className="relative">
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="pl-10 pr-10 h-11 bg-background/50 border-border/70 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl transition-all"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 cursor-pointer"
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <Button type="submit" className="w-full h-11 rounded-xl font-semibold bg-primary text-primary-foreground hover:bg-primary/95 transition-all shadow-md hover:shadow-lg active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 group">
+            Create Account
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </form>
+
+        <p className="text-center text-sm text-muted-foreground mt-8 relative z-10">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="text-primary font-semibold hover:underline transition-colors"
+          >
+            Sign In
+          </Link>
+        </p>
+      </div>
+    </div>
+  )
+}

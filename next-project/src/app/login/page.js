@@ -6,14 +6,24 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { api } from "@/lib/api"
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
+
+    try {
+        let res = await api.post("/api/auth/login", {email, password})
+        console.log("res from login", res.data)
+        setEmail("")
+        setPassword("")
+    } catch (error) {
+        console.log("error in handleSubmit", error)
+    }
   }
 
   return (

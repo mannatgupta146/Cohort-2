@@ -6,6 +6,7 @@ import { User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { api } from "@/lib/api"
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -13,8 +14,18 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
+    
+    try {
+      let res = await api.post("/api/auth/register", {name, email, password})
+      console.log("res from register", res.data)
+      setName("")
+      setEmail("")
+      setPassword("")
+    } catch (error) {
+      console.log("error in handleSubmit", error)
+    }
   }
 
   return (

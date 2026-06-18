@@ -15,12 +15,12 @@ export const AuthProvider = ({children}) => {
         try {
             const res = await api.get("/api/auth/me")
             console.log(res)
-            setLoading(false)
             setUser(res.data.user)
         } catch (error) {
-            setLoading(false)
             setUser(null)
             console.log("error in hydration", error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
       hydrateUser()
     }, [])
 
-    return <Auth.Provider value={{user, setUser, hydrateUser}}> {children} </Auth.Provider>
+    return <Auth.Provider value={{user, setUser, hydrateUser, loading}}> {children} </Auth.Provider>
 }
 
 export const useAuth = () => useContext(Auth)

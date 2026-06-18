@@ -6,14 +6,20 @@ import React, { useEffect } from 'react'
 
 const ProtectedRoute = ({children}) => {
 
-    const { user } = useAuth()
+    const { user, loading} = useAuth()
+
+    if(loading){
+        return <div>Loading...</div>
+    }
+
+    
     const router = useRouter()
 
     useEffect(() => {
-        if(!user){
-            router.replace("/login")
+        if(!user && !loading){
+            router.push("/login")
         }
-    }, [user, router])
+    }, [user, router, loading])
 
   return children
 }

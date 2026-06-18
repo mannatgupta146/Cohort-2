@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React from 'react'
+import ModeToggle from "./toggleTheme"
   
 const Navbar = () => {
   const pathname = usePathname()
@@ -38,7 +39,8 @@ const Navbar = () => {
               )
             })}
         </div>
-        <div>
+        <div className="flex items-center gap-4">
+            <ModeToggle />
             <button className="px-5 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all duration-200 active:scale-95 shadow-sm cursor-pointer">
               Login
             </button>

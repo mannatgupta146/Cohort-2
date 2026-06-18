@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata = {
@@ -10,8 +11,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col " suppressHydrationWarning>
-        <Navbar/>
-        <div className="px-6 py-4">{children}</div>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar/>
+            <div className="px-6 py-4">{children}</div>
+          </ThemeProvider>
       </body>
     </html>
   );

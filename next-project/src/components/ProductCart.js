@@ -36,7 +36,9 @@ export default function ProductCard({ product }) {
         </p>
 
         <div className="flex items-center justify-between mt-5">
-          <h3 className="text-emerald-600 dark:text-emerald-400 text-2xl font-bold"> ${product.price} </h3>
+          <h3 className="text-emerald-600 dark:text-emerald-400 text-2xl font-bold">
+            ₹{Math.round(product.price * 83).toLocaleString('en-IN')}
+          </h3>
 
           <button className="px-4 py-2 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 rounded-xl hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-200 active:scale-95 shadow-sm cursor-pointer">
             Add

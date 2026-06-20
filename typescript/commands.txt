@@ -1,0 +1,5 @@
+1. make a folder and run commands
+npm i typescript @types/node ts-node --save-dev
+
+2. creating tsconfig.json file using 
+'npx tsc --init'
